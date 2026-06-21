@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南宫28 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #fbe9d7 0%, #f7d9b3 50%, #f5cf9f 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.6;
+            color: #2e241e;
+        }
+
+        .wrapper {
+            max-width: 1040px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 48px 48px 32px 32px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 白色内容卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 8px 24px rgba(160, 100, 60, 0.10);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card + .card {
+            margin-top: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(140, 90, 50, 0.12);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #a4663c, #c2814b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 550;
+            color: #4e3628;
+            margin-bottom: 1.2rem;
+            border-left: 6px solid #d99c6e;
+            padding-left: 0.9rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #5d3e2b;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #3b2d25;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: #5f4638;
+            max-width: 680px;
+            margin: 0.75rem 0 1.5rem 0;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            padding: 0.4rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 450;
+            color: #673f28;
+            box-shadow: 0 2px 10px rgba(190, 130, 70, 0.15);
+        }
+
+        .link-btn {
+            display: inline-block;
+            background: #b57d50;
+            color: #ffffff;
+            padding: 0.7rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 550;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: background 0.25s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(160, 100, 55, 0.25);
+        }
+
+        .link-btn:hover {
+            background: #a0683e;
+            box-shadow: 0 6px 20px rgba(140, 85, 40, 0.30);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .feature-item {
+            background: #fcf6ef;
+            padding: 1.2rem 1.4rem;
+            border-radius: 20px;
+            transition: background 0.2s;
+        }
+
+        .feature-item:hover {
+            background: #f8ede2;
+        }
+
+        .feature-item strong {
+            color: #734b2f;
+            font-weight: 600;
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9d6c6;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #452f23;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            color: #5a4235;
+            padding-left: 0.2rem;
+        }
+
+        .footer-links {
+            text-align: center;
+            padding: 1.8rem 0 0.8rem;
+            border-top: 1px solid #e1ccba;
+            margin-top: 1.2rem;
+        }
+
+        .footer-links a {
+            color: #794f31;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.1rem 0.8rem;
+            transition: color 0.15s;
+        }
+
+        .footer-links a:hover {
+            color: #a76d45;
+            text-decoration: underline;
+        }
+
+        .inline-link {
+            color: #855f41;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #cba885;
+            transition: border-bottom 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #a86f47;
+            border-bottom: 1px solid #a86f47;
+        }
+
+        @media (max-width: 700px) {
+            .wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 32px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .link-btn {
+                padding: 0.6rem 1.6rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    
+    <!-- HERO 区 -->
+    <div class="card" style="background: #ffffff; text-align: center; padding-bottom: 2.5rem;">
+        <span class="hero-tagline">持续稳定 · 直连体验</span>
+        <h1>南宫28</h1>
+        <p class="hero-sub">
+            从信息展示到功能入口，我们更看重页面的真实可用与长期稳定。  
+            无论你关注哪个板块，都能通过统一入口快速定位。
+        </p>
+        <div style="margin-top: 0.8rem;">
+            <a href="https://main-cn-nangong28.com" class="link-btn">南宫28</a>
+        </div>
+        <p style="font-size: 0.9rem; color: #7a5e4b; margin-top: 1.2rem;">
+            页面结构明晰，内容更新可追溯，适合习惯固定入口的用户。
+        </p>
+    </div>
+
+    <!-- 优势区：稳定与说明 -->
+    <div class="card">
+        <h2>为什么强调稳定入口</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <strong>直达，无中间跳转</strong><br>
+                页面采用直连路径，每次请求都指向同一层结构，减少因链路变化导致的中断。
+            </div>
+            <div class="feature-item">
+                <strong>信息层级清晰</strong><br>
+                从标题到正文，按功能块组织内容，浏览时可快速提取关键段落。
+            </div>
+            <div class="feature-item">
+                <strong>适应多种场景</strong><br>
+                无论桌面还是移动端，卡片布局与渐变背景都保持较佳的识别度。
+            </div>
+            <div class="feature-item">
+                <strong>说明先行</strong><br>
+                每个区域附带简短描述，帮助首次访问者理解页面用途，降低认知负荷。
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：具体功能与使用场景 -->
+    <div class="card">
+        <h2>页面说明与适用方向</h2>
+        <p>
+            本页旨在提供关于 <a href="https://main-cn-nangong28.com" class="inline-link">南宫28</a> 的结构化说明。  
+            内容覆盖常见功能介绍、访问习惯、以及如何快速浏览后续模块。
+        </p>
+        <p>
+            所有链接均指向同一稳定地址，避免多级重定向。页面以知识型口吻介绍，  
+            不包含诱导性表述，也不对任何结果做出承诺，仅作为信息参考。
+        </p>
+        <p>
+            如果你需要定期查阅某个模块，建议将本页加入浏览器书签，以此作为固定入口。  
+            后续板块更新也会保持相同的视觉与结构风格。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div class="card">
+        <h2>常见疑问摘要</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">▸ 页面内容是否会频繁变化？</span>
+                <span class="faq-a">结构保持稳定；信息区块将根据功能调整而更新，但不会改变整体布局。</span>
+            </li>
+            <li>
+                <span class="faq-q">▸ 移动端浏览是否有差异？</span>
+                <span class="faq-a">已做响应式适配，卡片尺寸、字体间距会根据屏幕宽度自动优化。</span>
+            </li>
+            <li>
+                <span class="faq-q">▸ 如何确认链接指向最新地址？</span>
+                <span class="faq-a">所有链接均指向 <a href="https://main-cn-nangong28.com" class="inline-link">南宫28</a> 主域，未使用第三方短链或中间页。</span>
+            </li>
+            <li>
+                <span class="faq-q">▸ 页面适合哪些用户？</span>
+                <span class="faq-a">偏好固定入口、需要快速了解内容分块、希望减少不必要跳转的浏览者。</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 底部链接区 -->
+    <div class="footer-links">
+        <p style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #634b39;">
+            持续可用的信息入口 · 页面版本 v2.3
+        </p>
+        <a href="https://main-cn-nangong28.com">南宫28</a>  
+        <span style="color: #b28b6e;">|</span>  
+        <a href="https://main-cn-nangong28.com">南宫28</a>  
+        <span style="color: #b28b6e;">|</span>  
+        <a href="https://main-cn-nangong28.com">南宫28</a>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #7b6454;">
+            © 内容仅供参考 · 建议以实际页面为准
+        </p>
+    </div>
+</div>
+</body>
+</html>
